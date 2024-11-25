@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>文件物件模型 - DOM</h1>
+    <hr>
+    <form action="">
+        請選擇選修的科目:
+        <!-- value的屬性值是丟給電腦看的 點選的話可以透過他看到裡面內容-->
+        <!-- 給一個name形成小陣列 區隔 因為都一樣 -->
+        <input name="subjects" type="checkbox" value="html">HTML
+        <input name="subjects" type="checkbox" value="css">CSS
+        <input name="subjects" type="checkbox" value="js">JavaScript
+        <!-- 綁定事件的做法 -->
+        <input type="button" onclick="getSubject()" value="送出">
+        <!--  利用監聽事件 -->
+        <input id="btn1" type="button" value="送出2">
+    </form>
+
+    <script>
+        let subjects = document.getElementsByName('subjects');
+        //取得核取方塊內容
+        for (let i = 0; i < subjects.length; i++) {
+            console.log(subjects[i].value);
+        }
+        // <!-- 綁定事件的做法 -->
+        function getSubject() {
+            //顯示被選取(checked)的核取方塊的內容 >value
+            for (let i = 0; i < subjects.length; i++) {
+                if (subjects[i].checked) {
+                    console.log(subjects[i].value);
+                }
+            }
+        }
+
+        //利用監聽事件addEventListener(第一個事件名稱，事件發生時的程式處理) 
+        //函式後面不用家小括號 因為寫了就會變主動執行 
+        //也可以直接寫成箭頭函式(第一個事件名稱，()=>{裡面放getSubject()裡面的內容})) 
+        document.getElementById('btn1').addEventListener('click', getSubject)
+
+    </script>
+</body>
+
+</html>
