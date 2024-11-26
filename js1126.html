@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #span1 {
+            /* 轉大寫(英文) */
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <P id="p1">
+
+        <span id="span1">Hello,<br>JavaScript</span>
+        <span style="display: none;">我是看不見的內容</span>
+    </P>
+    <h3>使用textContent屬性的結果:回傳內容</h3>
+    <!-- rows=> 有幾行   cols=>一行有幾個字-->
+    <textarea name="" id="textContentOutput" rows="8" cols="70"></textarea><!-- 多行內容顯示 -->
+    <h3>使用innerText屬性的結果:回傳內容+CSS樣式+換行</h3>
+    <!-- rows   cols -->
+    <textarea name="" id="innerTextOutput" rows="8" cols="70"></textarea>
+    <h3>使用innerHTML屬性的結果:傳回HTML的結構 不會執行裡面的樣式</h3>
+    <!-- rows=> 有幾行   cols=>一行有幾個字-->
+    <textarea name="" id="innerHTMLOutput" rows="8" cols="70"></textarea>
+
+    <script>
+        //取得段落
+        let p1=document.getElementById('p1');
+        //取得TextContent顯示區
+        let textContentOutput=document.getElementById('textContentOutput');
+        //取得innerText顯示區
+        let innerTextOutput=document.getElementById('innerTextOutput');
+        //取得innerHTML顯示區
+        let innerHTMLOutput=document.getElementById('innerHTMLOutput');
+        
+        textContentOutput.value=p1.textContent;/* textContent只會傳回標籤內容 */
+        innerTextOutput.value=p1.innerText;/* innerText會套用CSS樣式 */
+        innerHTMLOutput.value=p1.innerHTML;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inputOne">
+    <button id="btn1">增加節點</button>
+    <button id="btn2">自己增加節點</button><br>
+    <input type="text" id="delNodeNum">
+    <button id="btn3">刪除節點</button>
+    <ul id="ul1" class="ul-box">
+        <li>HTML</li>
+        <li>JS</li>
+    </ul>
+
+    <ul id="ul2">
+        <li>React</li>
+    </ul>
+    <script>
+        //1.建立新節點 =>createElement()
+        //2.建立文字節點 =>createTextNode()
+        //3.將文字節點加入到新的節點 =>appendChild()
+        //4.取得加入新節點的位置 => getElementByTagName() 
+        //因為上面只有寫ul 如果是類別ByclassName  id就是Byid
+        //5.將新節點加入道步驟四的元素中最後一個子節點 =>appendChild()
+
+        // document.getElementById('btn1').addEventListener
+
+        let btn1 = document.getElementById('btn1');
+        btn1.addEventListener('click', () => {
+            //1.建立新節點 =>createElement()
+            let newElm = document.createElement('li');
+
+            //2.建立文字節點 =>createTextNode()
+            let newText = document.createTextNode('CSS');
+
+            //3.將文字節點加入到新的節點 =>appendChild()
+            newElm.appendChild(newText);
+
+            //4.取得加入新節點的位置 => getElementByTagName() 
+            //因為上面只有寫ul 如果是類別ByclassName  id就是Byid
+            // let position= document.getElementsByTagName('ul')[0]; //[0]第一個ul
+            let position = document.getElementById('ul1');
+
+            // let position= document.getElementsByClassName('ul-box'[0]);//???
+            //5.將新節點加入道步驟四的元素中最後一個子節點 =>appendChild()
+            position.appendChild(newElm);
+
+        })
+        /* let btn2 = document.getElementById('btn2');
+        btn2.addEventListener('click', () => {
+            //1.建立新節點 =>createElement()
+            let newElmQ = document.createElement('li');
+
+            //2a.取得文字方塊內容
+            let inputOne = document.getElementById('inputOne');
+
+            //2.建立文字節點 =>createTextNode()
+            let newText1 = document.createTextNode(inputOne.value);
+
+            //3.將文字節點加入到新的節點 =>appendChild()
+            newElmQ.appendChild(newText1);
+
+            //4.取得加入新節點的位置 => getElementByTagName() 
+            //因為上面只有寫ul 如果是類別ByclassName  id就是Byid
+            // let position= document.getElementsByTagName('ul')[0]; //[0]第一個ul
+            let positionTwo = document.getElementById('ul2');
+            // let position= document.getElementsByClassName('ul-box'[0]);//???
+            //5.將新節點加入道步驟四的元素中最後一個子節點 =>appendChild()
+            positionTwo.appendChild(newElmQ);
+
+        }) */
+
+        let btn3 = document.getElementById('btn3');
+        //命名函式運作
+        btn3.addEventListener('click', function () {
+            //取得所有li的項目
+            let liCount = document.getElementsByTagName('li').length;
+            //取得刪除第幾個節點的方塊內容
+            let delNodeNum = document.getElementById('delNodeNum').value - 1;
+            if (delNodeNum => 0 && delNodeNum < liCount) {
+                console.log(delNodeNum);
+                //移除第一個清單
+                // let removeElm = document.getElementsByName('li')[0];
+                //移除指定的
+                let removeElm = document.getElementsByName('li')[delNodeNum];
+                //找到被刪除的父元素節點
+                let parentElm = removeElm.parentNode;
+                //從父元素移除指定的子節點
+                parentElm.removeChild(removeElm);
+            }else{
+                alert('無法執行');
+            }
+        })
+    </script>
+</body>
+
+</html>
